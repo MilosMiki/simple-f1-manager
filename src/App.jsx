@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
-import { F1_1998_DRIVERS, F1_1998_TEAMS, F1_1998_CALENDAR } from './stats/seasons/F11998';
-import { F1_1999_DRIVERS, F1_1999_TEAMS, F1_1999_CALENDAR } from './stats/seasons/F11999';
+import { F1_1998_DRIVERS, F1_1998_TEAMS, F1_1998_CALENDAR, F1_1998_POINTS_SYSTEM, F1_1998_POINTS_FL, F1_1998_POINTS_POLE } from './stats/seasons/F11998';
+import { F1_1999_DRIVERS, F1_1999_TEAMS, F1_1999_CALENDAR, F1_1999_POINTS_SYSTEM, F1_1999_POINTS_FL, F1_1999_POINTS_POLE } from './stats/seasons/F11999';
 import SeasonResults from './components/SeasonResults';
 import RaceCalendar from './components/RaceCalendar';
 import TeamPerformanceChart from './components/TeamPerformanceChart';
@@ -16,12 +16,18 @@ const SEASONS = {
   1998: {
     drivers: F1_1998_DRIVERS,
     teams: F1_1998_TEAMS,
-    calendar: F1_1998_CALENDAR
+    calendar: F1_1998_CALENDAR,
+    pointsSystem: F1_1998_POINTS_SYSTEM,
+    pointsFL: F1_1998_POINTS_FL,
+    pointsPole: F1_1998_POINTS_POLE
   },
   1999: {
     drivers: F1_1999_DRIVERS,
     teams: F1_1999_TEAMS,
-    calendar: F1_1999_CALENDAR
+    calendar: F1_1999_CALENDAR,
+    pointsSystem: F1_1999_POINTS_SYSTEM,
+    pointsFL: F1_1999_POINTS_FL,
+    pointsPole: F1_1999_POINTS_POLE
   }
   // Add more seasons here as you create them
 };
@@ -428,6 +434,9 @@ function App() {
   const [showManagement, setShowManagement] = useState(false);
   const [showRatings, setShowRatings] = useState(false);
   const [teamBoosts, setTeamBoosts] = useState([]);
+  const [pointsSystem, setPointsSystem] = useState(SEASONS[1998].pointsSystem);
+  const [pointsFL, setPointsFL] = useState(SEASONS[1998].pointsFL);
+  const [pointsPole, setPointsPole] = useState(SEASONS[1998].pointsPole);
 
   // Add season change handler
   const handleSeasonChange = (season) => {
@@ -437,6 +446,9 @@ function App() {
     setDrivers(SEASONS[season].drivers);
     setTeams(SEASONS[season].teams);
     setCalendar(SEASONS[season].calendar);
+    setPointsSystem(SEASONS[season].pointsSystem);
+    setPointsFL(SEASONS[season].pointsFL);
+    setPointsPole(SEASONS[season].pointsPole);
     setIsLoading(true);
   };
 
@@ -445,7 +457,7 @@ function App() {
     
     for (const race of calendar) {
       const grid = await simulateQualifying(drivers, teams, race.trackId);
-      const raceResult = await simulateRace(grid, race.trackId);
+      const raceResult = await simulateRace(grid, race.trackId, pointsSystem, pointsFL, pointsPole);
       
       seasonResults.push({
         raceId: race.id,
@@ -550,12 +562,11 @@ function App() {
       <header className="app-header">
         <h1>{selectedSeason} Formula 1 Season Simulator</h1>
       </header>
-      
-      <main>
-        {/* Add Season Switcher */}
-        <div className="season-switcher">
+
+      <div className="sticky-controls">
+        <div className="action-buttons">
           <label htmlFor="season-select">Season: </label>
-          <select 
+          <select
             id="season-select"
             value={selectedSeason}
             onChange={(e) => handleSeasonChange(Number(e.target.value))}
@@ -564,7 +575,24 @@ function App() {
               <option key={year} value={year}>{year}</option>
             ))}
           </select>
+          <button onClick={handleResimulate}>Resimulate Season</button>
+          <button onClick={() => setShowManagement(!showManagement)}>
+            {showManagement ? 'Hide Management' : 'Show Management'}
+          </button>
+          <button onClick={resetToOriginal}>Reset to Original</button>
+          <button onClick={() => setShowRatings(!showRatings)}>
+            {showRatings ? 'Hide Ratings' : 'Show Ratings'}
+          </button>
+          <button
+            onClick={() => exportToExcel(rawRaceResults, seasonResults, teamResults, drivers, teams, calendar)}
+            disabled={seasonResults.length === 0}
+          >
+            Export Full Results (Excel)
+          </button>
         </div>
+      </div>
+
+      <main>
         {isLoading ? (
           <div className="loading">Simulating season...</div>
         ) : selectedRaceId !== null ? (
@@ -577,22 +605,6 @@ function App() {
           />
         ) : (
           <>
-            <div className="action-buttons">
-              <button onClick={handleResimulate}>Resimulate Season</button>
-              <button onClick={() => setShowManagement(!showManagement)}>
-                {showManagement ? 'Hide Management' : 'Show Management'}
-              </button>
-              <button onClick={resetToOriginal}>Reset to Original</button>
-              <button onClick={() => setShowRatings(!showRatings)}>
-                {showRatings ? 'Hide Ratings' : 'Show Ratings'}
-              </button>
-              <button 
-                onClick={() => exportToExcel(rawRaceResults, seasonResults, teamResults, drivers, teams, calendar)}
-                disabled={seasonResults.length === 0}
-              >
-                Export Full Results (Excel)
-              </button>
-            </div>
             {showManagement && (
               <TeamManagement
                 drivers={drivers}
@@ -603,19 +615,19 @@ function App() {
                 setTeamBoosts = {setTeamBoosts}
               />
             )}
-    
+
             {showRatings && ( <DriverRatings drivers={drivers} teams={teams}/> )}
             {showRatings && ( <TeamPerformanceChart teams={teams}/> )}
-            <RaceCalendar 
-              calendar={calendar} 
+            <RaceCalendar
+              calendar={calendar}
               onRaceClick={(raceId) => setSelectedRaceId(raceId)}
               selectedSeason={selectedSeason}
             />
-            <SeasonResults 
-              standings={seasonResults} 
-              teamStandings={teamResults} 
-              calendar={calendar} 
-              drivers={drivers} 
+            <SeasonResults
+              standings={seasonResults}
+              teamStandings={teamResults}
+              calendar={calendar}
+              drivers={drivers}
               teams={teams}
               onRaceClick={(raceId) => setSelectedRaceId(raceId)}
               selectedSeason={selectedSeason}

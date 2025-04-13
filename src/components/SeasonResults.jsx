@@ -89,7 +89,7 @@ const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onR
                         {getResultDisplay(pos)}
                       </td>
                     ))}
-                    <td className="points">{standing.points}</td>
+                    <td className="points">{Math.floor(standing.points)}</td>
                   </tr>
                 );
               })}
@@ -136,7 +136,7 @@ const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onR
                         {getResultDisplay(pos)}
                       </td>
                     ))}
-                    <td rowSpan="2" className="points">{standing.points}</td>
+                    <td rowSpan="2" className="points">{Math.floor(standing.points)}</td>
                   </tr>
                   <tr key={`team-${standing.team.id}-2`} className="team-secondary-driver">
                     <td>{standing.teamDrivers[1]?.carNumber}</td>

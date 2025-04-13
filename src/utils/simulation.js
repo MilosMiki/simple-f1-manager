@@ -62,7 +62,7 @@ export const simulateQualifying = async (drivers, teams, trackId) => {
   return grid.sort((a, b) => a.qualifyingTime - b.qualifyingTime); // fastest (lowest time) first
 };
 
-export const simulateRace = async (qualifyingGrid, trackId) => {
+export const simulateRace = async (qualifyingGrid, trackId, pointsTable, pointsFL, pointsPole) => {
   const track = await getTrackData(trackId);
   const results = [];
   const totalLaps = track.laps || 60;
@@ -124,7 +124,6 @@ export const simulateRace = async (qualifyingGrid, trackId) => {
   finishedDrivers.sort((a, b) => a.raceTime - b.raceTime);
 
   // Assign points (1998 system)
-  const pointsTable = [10, 6, 4, 3, 2, 1];
 
   const raceResults = finishedDrivers.map((driver, index) => ({
     driverId: driver.id,

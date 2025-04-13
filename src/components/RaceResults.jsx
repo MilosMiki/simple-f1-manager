@@ -94,7 +94,7 @@ const RaceResults = ({ race, drivers, teams, calendar, onBack }) => {
                 time = "+" + formatTime(gap);
             }
             return (
-              <tr key={r.driverId} style={{ fontWeight: r.points > 0 ? 'bold' : 'normal' }}>
+              <tr key={r.driverId} style={{ fontWeight: r.points >= 1 ? 'bold' : 'normal' }}>
                 <td>{r.position}</td>
                 <td>
                   {d?.country && getCountryFlag(d.country)}
@@ -104,7 +104,7 @@ const RaceResults = ({ race, drivers, teams, calendar, onBack }) => {
                 <td>{t?.name}</td>
                 <td>{r.startingPosition}</td>
                 <td>{typeof r.position === 'string' ? r.reason : time}</td>
-                <td>{r.points}{r.isFastestLap ? ' (FL)' : ''}</td>
+                <td>{Math.floor(r.points)}{r.isFastestLap ? ' (FL)' : ''}</td>
               </tr>
             );
           })}
