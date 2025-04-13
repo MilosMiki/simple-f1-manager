@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
-import { F1_1998_DRIVERS, F1_1998_TEAMS } from '../stats/seasons/F11998';
 import '../styles/DriverRatings.css';
 
-const DriverRatings = () => {
+const DriverRatings = ({ drivers = [], teams = [] }) => {
+  /*
   const [drivers, setDrivers] = useState([]);
   const [teams, setTeams] = useState([]);
 
   useEffect(() => {
     setDrivers(F1_1998_DRIVERS);
     setTeams(F1_1998_TEAMS);
-  }, []);
+  }, []);*/
 
   // Calculate overall rating using weighted formula
   const calculateDriverRating = (driver) => {
     // Weighted formula (adjust weights as needed)
     return Math.round(
-      (driver.performance * 0.35) +
+      (driver.performance * 0.3) +
       (driver.racecraft * 0.25) +
       (driver.consistency * 0.15) +
       (driver.tyreConservation * 0.25) +

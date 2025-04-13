@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { F1_1998_TEAMS } from '../stats/seasons/F11998';
 import '../styles/TeamPerformanceChart.css';
 
-const TeamPerformanceChart = () => {
-  const [teams, setTeams] = useState([]);
+const TeamPerformanceChart = ({ teams = [] }) => {
+  /*const [teams, setTeams] = useState([]);
 
   useEffect(() => {
     setTeams(F1_1998_TEAMS);
-  }, []);
+  }, []);*/
 
   const performanceAttributes = [
     { key: 'engine', label: 'Engine Power' },

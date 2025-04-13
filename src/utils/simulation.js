@@ -1,4 +1,3 @@
-import { F1_1998_DRIVERS, F1_1998_TEAMS } from '../stats/seasons/F11998';
 
 const getTrackData = async (trackId) => {
   try {
