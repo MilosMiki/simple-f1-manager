@@ -6,16 +6,12 @@ export const NURBURGRING_TRACK = {
   lapDistance: 4.556,
   raceDistance: 305.252,
   corners: 15,
-  characteristics: {
-    power: 0.7,
-    handling: 0.85,
-    aerodynamics: 0.8,
-    overtaking: 0.55
-  },
+  baseLapTime: 82,
   performanceFactors: {
     driverImportance: 0.75,
     powerImportance: 0.65,
     handlingImportance: 0.9,
-    overtakingDifficulty: 0.6
+    overtakingDifficulty: 0.6,
+    tyreDegradation: 0.7
   }
 };

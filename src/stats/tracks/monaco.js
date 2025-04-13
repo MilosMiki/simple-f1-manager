@@ -6,16 +6,12 @@ export const MONACO_TRACK = {
   lapDistance: 3.328,
   raceDistance: 259.584,
   corners: 19,
-  characteristics: {
-    power: 0.4,
-    handling: 1.0,
-    aerodynamics: 0.9,
-    overtaking: 0.9
-  },
+  baseLapTime: 83,
   performanceFactors: {
     driverImportance: 0.9,
     powerImportance: 0.3,
     handlingImportance: 1.0,
-    overtakingDifficulty: 0.95
+    overtakingDifficulty: 0.95,
+    tyreDegradation: 0.4
   }
 };

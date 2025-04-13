@@ -9,34 +9,34 @@ const getTrackData = async (trackId) => {
   }
 };
 
-const calculateBaseRaceTime = (driver, team, track) => {
-  const driverFactor = track.performanceFactors.driverImportance || 0.7;
-  const teamFactor = 1 - driverFactor;
-
-  let basePerformance = (
-    driver.performance * driverFactor +
-    team.performance * teamFactor
-  );
+const basePerformanceFn = (driver,team,track,isRace) => {
 
   // Apply track-specific bonuses
-  basePerformance *= (
+  let basePerformance = (
     0.8 + 
-    (team.engine * track.performanceFactors.powerImportance * 0.002) +
-    (team.chassis * track.performanceFactors.handlingImportance * 0.002)
+    (team.engine * track.performanceFactors.powerImportance * 0.3) +
+    (team.chassis * track.performanceFactors.handlingImportance * 0.3) + 
+    (driver.performance * track.performanceFactors.driverImportance * 0.37) +
+    (isRace ? (driver.tyreConservation + team.tyreConservation) * track.performanceFactors.tyreDegradation * 0.15 : 0)
   );
 
-  // Apply reliability penalty
-  basePerformance -= (100 - driver.reliability) / 15;
-  basePerformance -= (100 - team.reliability) / 20;
+  return basePerformance / 70;
+};
+
+const calculateBaseRaceTime = (driver, team, track) => {
+
+  let basePerformance = basePerformanceFn(driver,team,track,true);
 
   // Base lap time (e.g. 90 seconds) minus performance boost
   const lapTime = track.baseLapTime || 90;
   const totalLaps = track.laps || 60;
 
-  let raceTime = lapTime * totalLaps - basePerformance;
+  // Apply tyre wear factor
+  // const tyreWearFactor = (track.performanceFactors.tyreDegradation || 0.5) * (1 - (driver.tyreConservation + team.tyreConservation) / 400);
+  let raceTime = (lapTime - basePerformance) * totalLaps;
 
   // Add some randomness to simulate inconsistency
-  raceTime += Math.random() * 30; // ±15s variation
+  raceTime += Math.random() * ((2 - (driver.consistency/100)) * 30); // ±15s variation + ±15s driver consistency
 
   return raceTime;
 };
@@ -48,8 +48,10 @@ export const simulateQualifying = async (drivers, teams, trackId) => {
 
   for (const driver of drivers) {
     const team = teams.find(t => t.id === driver.teamId);
-    const performance = calculateBaseRaceTime(driver, team, track) * 0.9; // slightly optimized lap in qualifying
-    const qualifyingTime = (performance + Math.random() * 60) / totalLaps; // ±30s variation
+    const lapTime = track.baseLapTime || 90;
+    let basePerformance = basePerformanceFn(driver,team,track, false);
+    const performance = (lapTime - basePerformance * 3); // slightly optimized lap in qualifying
+    const qualifyingTime = performance + (Math.random() * 1); // ±0.5s variation
 
     grid.push({
       ...driver,
@@ -72,25 +74,38 @@ export const simulateRace = async (qualifyingGrid, trackId) => {
 
   for (let i = 0; i < qualifyingGrid.length; i++) {
     const driver = qualifyingGrid[i];
-    const positionPenalty = 1 + (i * 0.001 * track.performanceFactors.overtakingDifficulty); // 0.1% penalty per grid position
+    const positionPenalty = 1 + ((i - (driver.racecraft/50)) * 0.0015 * track.performanceFactors.overtakingDifficulty); // 0.15% penalty per grid position
     const team = driver.team;
 
-    // Calculate chance of DNF
-    const dnfChance = (
-      (100 - driver.reliability) * 0.6 +
-      (100 - team.reliability) * 0.4
-    ) / 100;
+    let dnfReason = null;
+    let willDnf = false;
 
-    const willDnf = Math.random() < dnfChance && dnfs.length < dnfCount;
+    // Calculate chance of driver DNF
+    const driverDnfChance = (100 - driver.reliability) * 0.001; // Adjusted scaling factor
+    const willDriverDnf = Math.random() < driverDnfChance;
+
+    // Calculate chance of team DNF
+    const teamDnfChance = (100 - team.reliability) * 0.008; // Adjusted scaling factor
+    const willTeamDnf = Math.random() < teamDnfChance;
+
+    if (willDriverDnf) {
+      willDnf = true;
+      const driverDnfReasons = ["Collision", "Spun off"];
+      dnfReason = driverDnfReasons[Math.floor(Math.random() * driverDnfReasons.length)];
+    }
+
+    if (willTeamDnf) {
+      willDnf = true;
+      const teamDnfReasons = ["Engine", "Gearbox", "Hydraulics", "Electronics"];
+      const teamReason = teamDnfReasons[Math.floor(Math.random() * teamDnfReasons.length)];
+      dnfReason = dnfReason ? `${dnfReason} / ${teamReason}` : teamReason;
+    }
 
     if (willDnf) {
-      const dnfReasons = ["Engine", "Gearbox", "Collision", "Hydraulics", "Electronics", "Spun off"];
-      const reason = dnfReasons[Math.floor(Math.random() * dnfReasons.length)];
-
       dnfs.push({
         driverId: driver.id,
         position: "Ret",
-        reason,
+        reason: dnfReason,
         points: 0,
         isFastestLap: false,
         startingPosition: i + 1

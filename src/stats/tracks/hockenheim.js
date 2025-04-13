@@ -6,16 +6,12 @@ export const HOCKENHEIM_TRACK = {
   lapDistance: 6.823,
   raceDistance: 307.035,
   corners: 13,
-  characteristics: {
-    power: 0.95,
-    handling: 0.5,
-    aerodynamics: 0.6,
-    overtaking: 0.3
-  },
+  baseLapTime: 106,
   performanceFactors: {
     driverImportance: 0.5,
     powerImportance: 1.0,
     handlingImportance: 0.5,
-    overtakingDifficulty: 0.4
+    overtakingDifficulty: 0.4,
+    tyreDegradation: 0.6
   }
 };

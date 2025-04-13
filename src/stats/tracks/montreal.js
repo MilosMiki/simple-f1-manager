@@ -6,16 +6,12 @@ export const MONTREAL_TRACK = {
   lapDistance: 4.421,
   raceDistance: 305.049,
   corners: 14,
-  characteristics: {
-    power: 0.8,
-    handling: 0.7,
-    aerodynamics: 0.6,
-    overtaking: 0.4
-  },
+  baseLapTime: 82,
   performanceFactors: {
     driverImportance: 0.6,
     powerImportance: 0.85,
     handlingImportance: 0.7,
-    overtakingDifficulty: 0.5
+    overtakingDifficulty: 0.5,
+    tyreDegradation: 0.55
   }
 };

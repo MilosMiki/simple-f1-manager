@@ -3,111 +3,100 @@ export const F1_1998_TEAMS = [
     id: 1,
     name: "McLaren-Mercedes",
     country: "United Kingdom",
-    performance: 95,
-    reliability: 90,
-    pitStop: 90,
-    chassis: 92,
-    engine: 95
+    reliability: 85,
+    chassis: 97,
+    engine: 95,
+    tyreConservation: 90
   },
   {
     id: 2,
     name: "Ferrari",
     country: "Italy",
-    performance: 90,
-    reliability: 85,
-    pitStop: 85,
-    chassis: 88,
-    engine: 93
+    reliability: 95,
+    chassis: 95,
+    engine: 94,
+    tyreConservation: 88
   },
   {
     id: 3,
     name: "Williams-Mecachrome",
     country: "United Kingdom",
-    performance: 80,
-    reliability: 75,
-    pitStop: 80,
-    chassis: 85,
-    engine: 78
+    reliability: 78,
+    chassis: 86,
+    engine: 100,
+    tyreConservation: 80
   },
   {
     id: 4,
     name: "Benetton-Playlife",
     country: "Italy",
-    performance: 80,
-    reliability: 75,
-    pitStop: 80,
-    chassis: 85,
-    engine: 78
+    reliability: 76,
+    chassis: 84,
+    engine: 95,
+    tyreConservation: 78
   },
   {
     id: 5,
     name: "Jordan-Mugen-Honda",
     country: "Ireland",
-    performance: 80,
-    reliability: 75,
-    pitStop: 80,
-    chassis: 85,
-    engine: 78
+    reliability: 67,
+    chassis: 83,
+    engine: 81,
+    tyreConservation: 100
   },
   {
     id: 6,
     name: "Sauber-Petronas",
     country: "Switzerland",
-    performance: 80,
-    reliability: 75,
-    pitStop: 80,
-    chassis: 85,
-    engine: 78
+    reliability: 74,
+    chassis: 81,
+    engine: 77,
+    tyreConservation: 87
   },
   {
     id: 7,
     name: "Arrows",
     country: "United Kingdom",
-    performance: 80,
-    reliability: 75,
-    pitStop: 80,
-    chassis: 85,
-    engine: 78
+    reliability: 45,
+    chassis: 89,
+    engine: 70,
+    tyreConservation: 75
   },
   {
     id: 8,
     name: "Stewart-Ford",
     country: "United Kingdom",
-    performance: 80,
-    reliability: 75,
-    pitStop: 80,
-    chassis: 85,
-    engine: 78
+    reliability: 50,
+    chassis: 77,
+    engine: 74,
+    tyreConservation: 90
   },
   {
     id: 9,
     name: "Prost-Peugeot",
     country: "France",
-    performance: 80,
-    reliability: 75,
-    pitStop: 80,
-    chassis: 85,
-    engine: 78
+    reliability: 50,
+    chassis: 76,
+    engine: 73,
+    tyreConservation: 80
   },
   {
     id: 10,
     name: "Minardi-Ford",
     country: "Italy",
-    performance: 80,
-    reliability: 75,
-    pitStop: 80,
-    chassis: 85,
-    engine: 78
+    reliability: 55,
+    chassis: 73,
+    engine: 70,
+    tyreConservation: 73
   },
   {
     id: 11,
     name: "Tyrrell-Ford",
     country: "United Kingdom",
-    performance: 80,
-    reliability: 75,
-    pitStop: 80,
-    chassis: 85,
-    engine: 78
+    reliability: 64,
+    chassis: 72,
+    engine: 69,
+    tyreConservation: 72
   },
 ];
 
@@ -118,7 +107,10 @@ export const F1_1998_DRIVERS = [
     country: "Finland",
     teamId: 1,
     performance: 95, // Higher means better chance to win
-    reliability: 90  // Higher means less chance of DNF
+    reliability: 90,  // Higher means less chance of DNF
+    consistency: 92, // How consistently the driver performs at their potential
+    tyreConservation: 88, // Ability to manage tyre wear
+    racecraft: 94 // Skill in overtaking, defending, and strategy execution during a race
   },
   {
     id: 2,
@@ -126,7 +118,10 @@ export const F1_1998_DRIVERS = [
     country: "United Kingdom",
     teamId: 1,
     performance: 85,
-    reliability: 85
+    reliability: 85,
+    consistency: 88,
+    tyreConservation: 85,
+    racecraft: 87
   },
   {
     id: 3,
@@ -134,7 +129,10 @@ export const F1_1998_DRIVERS = [
     country: "Germany",
     teamId: 2,
     performance: 98,
-    reliability: 80
+    reliability: 80,
+    consistency: 95,
+    tyreConservation: 90,
+    racecraft: 99
   },
   {
     id: 4,
@@ -142,7 +140,10 @@ export const F1_1998_DRIVERS = [
     country: "United Kingdom",
     teamId: 2,
     performance: 75,
-    reliability: 85
+    reliability: 85,
+    consistency: 78,
+    tyreConservation: 82,
+    racecraft: 80
   },
   {
     id: 5,
@@ -150,7 +151,10 @@ export const F1_1998_DRIVERS = [
     country: "Canada",
     teamId: 3,
     performance: 80,
-    reliability: 75
+    reliability: 75,
+    consistency: 82,
+    tyreConservation: 78,
+    racecraft: 84
   },
   {
     id: 6,
@@ -158,7 +162,10 @@ export const F1_1998_DRIVERS = [
     country: "Germany",
     teamId: 3,
     performance: 78,
-    reliability: 70
+    reliability: 70,
+    consistency: 75,
+    tyreConservation: 72,
+    racecraft: 79
   },
   {
     id: 7,
@@ -166,7 +173,10 @@ export const F1_1998_DRIVERS = [
     country: "Italy",
     teamId: 4,
     performance: 77,
-    reliability: 65
+    reliability: 65,
+    consistency: 76,
+    tyreConservation: 74,
+    racecraft: 81
   },
   {
     id: 8,
@@ -174,7 +184,10 @@ export const F1_1998_DRIVERS = [
     country: "Austria",
     teamId: 4,
     performance: 74,
-    reliability: 70
+    reliability: 70,
+    consistency: 72,
+    tyreConservation: 70,
+    racecraft: 75
   },
   {
     id: 9,
@@ -182,7 +195,10 @@ export const F1_1998_DRIVERS = [
     country: "United Kingdom",
     teamId: 5,
     performance: 76,
-    reliability: 60
+    reliability: 60,
+    consistency: 80,
+    tyreConservation: 84,
+    racecraft: 82
   },
   {
     id: 10,
@@ -190,7 +206,10 @@ export const F1_1998_DRIVERS = [
     country: "Germany",
     teamId: 5,
     performance: 72,
-    reliability: 65
+    reliability: 65,
+    consistency: 70,
+    tyreConservation: 68,
+    racecraft: 77
   },
   {
     id: 11,
@@ -198,7 +217,10 @@ export const F1_1998_DRIVERS = [
     country: "France",
     teamId: 6,
     performance: 70,
-    reliability: 75
+    reliability: 75,
+    consistency: 74,
+    tyreConservation: 76,
+    racecraft: 78
   },
   {
     id: 12,
@@ -206,7 +228,10 @@ export const F1_1998_DRIVERS = [
     country: "United Kingdom",
     teamId: 6,
     performance: 68,
-    reliability: 70
+    reliability: 70,
+    consistency: 65,
+    tyreConservation: 70,
+    racecraft: 73
   },
   {
     id: 13,
@@ -214,7 +239,10 @@ export const F1_1998_DRIVERS = [
     country: "Finland",
     teamId: 7,
     performance: 65,
-    reliability: 60
+    reliability: 60,
+    consistency: 68,
+    tyreConservation: 66,
+    racecraft: 71
   },
   {
     id: 14,
@@ -222,7 +250,10 @@ export const F1_1998_DRIVERS = [
     country: "Brazil",
     teamId: 7,
     performance: 60,
-    reliability: 55
+    reliability: 55,
+    consistency: 62,
+    tyreConservation: 60,
+    racecraft: 65
   },
   {
     id: 15,
@@ -230,7 +261,10 @@ export const F1_1998_DRIVERS = [
     country: "Brazil",
     teamId: 8,
     performance: 73,
-    reliability: 50
+    reliability: 50,
+    consistency: 77,
+    tyreConservation: 79,
+    racecraft: 83
   },
   {
     id: 16,
@@ -238,7 +272,10 @@ export const F1_1998_DRIVERS = [
     country: "Denmark",
     teamId: 8,
     performance: 62,
-    reliability: 45
+    reliability: 45,
+    consistency: 58,
+    tyreConservation: 55,
+    racecraft: 60
   },
   {
     id: 17,
@@ -246,7 +283,10 @@ export const F1_1998_DRIVERS = [
     country: "Italy",
     teamId: 9,
     performance: 69,
-    reliability: 40
+    reliability: 40,
+    consistency: 66,
+    tyreConservation: 64,
+    racecraft: 70
   },
   {
     id: 18,
@@ -254,7 +294,10 @@ export const F1_1998_DRIVERS = [
     country: "France",
     teamId: 9,
     performance: 71,
-    reliability: 45
+    reliability: 45,
+    consistency: 79,
+    tyreConservation: 81,
+    racecraft: 76
   },
   {
     id: 19,
@@ -262,7 +305,10 @@ export const F1_1998_DRIVERS = [
     country: "Japan",
     teamId: 10,
     performance: 58,
-    reliability: 50
+    reliability: 50,
+    consistency: 60,
+    tyreConservation: 58,
+    racecraft: 63
   },
   {
     id: 20,
@@ -270,7 +316,10 @@ export const F1_1998_DRIVERS = [
     country: "Argentina",
     teamId: 10,
     performance: 55,
-    reliability: 30
+    reliability: 30,
+    consistency: 52,
+    tyreConservation: 48,
+    racecraft: 57
   },
   {
     id: 21,
@@ -278,7 +327,10 @@ export const F1_1998_DRIVERS = [
     country: "Brazil",
     teamId: 11,
     performance: 50,
-    reliability: 35
+    reliability: 35,
+    consistency: 48,
+    tyreConservation: 45,
+    racecraft: 50
   },
   {
     id: 22,
@@ -286,7 +338,10 @@ export const F1_1998_DRIVERS = [
     country: "Japan",
     teamId: 11,
     performance: 56,
-    reliability: 40
+    reliability: 40,
+    consistency: 54,
+    tyreConservation: 52,
+    racecraft: 59
   }
 ];
 
@@ -297,7 +352,8 @@ export const F1_1998_CALENDAR = [
     shortName: "AUS",
     circuit: "Albert Park Circuit, Melbourne",
     date: "8 March 1998",
-    trackId: "melbourne"
+    trackId: "melbourne",
+    country: "Australia"
   },
   {
     id: 2,
@@ -305,7 +361,8 @@ export const F1_1998_CALENDAR = [
     shortName: "BRA",
     circuit: "Autódromo José Carlos Pace, São Paulo",
     date: "29 March 1998",
-    trackId: "saopaulo"
+    trackId: "saopaulo",
+    country: "Brazil"
   },
   {
     id: 3,
@@ -313,7 +370,8 @@ export const F1_1998_CALENDAR = [
     shortName: "ARG",
     circuit: "Autódromo Oscar Alfredo Gálvez, Buenos Aires",
     date: "12 April 1998",
-    trackId: "buenosaires"
+    trackId: "buenosaires",
+    country: "Argentina"
   },
   {
     id: 4,
@@ -321,7 +379,8 @@ export const F1_1998_CALENDAR = [
     shortName: "SMR",
     circuit: "Autodromo Enzo e Dino Ferrari, Imola",
     date: "26 April 1998",
-    trackId: "imola"
+    trackId: "imola",
+    country: "Italy"
   },
   {
     id: 5,
@@ -329,7 +388,8 @@ export const F1_1998_CALENDAR = [
     shortName: "ESP",
     circuit: "Circuit de Catalunya, Montmeló",
     date: "10 May 1998",
-    trackId: "catalunya"
+    trackId: "catalunya",
+    country: "Spain"
   },
   {
     id: 6,
@@ -337,7 +397,8 @@ export const F1_1998_CALENDAR = [
     shortName: "MON",
     circuit: "Circuit de Monaco, Monte Carlo",
     date: "24 May 1998",
-    trackId: "monaco"
+    trackId: "monaco",
+    country: "Monaco"
   },
   {
     id: 7,
@@ -345,7 +406,8 @@ export const F1_1998_CALENDAR = [
     shortName: "CAN",
     circuit: "Circuit Gilles Villeneuve, Montreal",
     date: "7 June 1998",
-    trackId: "montreal"
+    trackId: "montreal",
+    country: "Canada"
   },
   {
     id: 8,
@@ -353,7 +415,8 @@ export const F1_1998_CALENDAR = [
     shortName: "FRA",
     circuit: "Circuit de Nevers Magny-Cours, Magny-Cours",
     date: "28 June 1998",
-    trackId: "magnycours"
+    trackId: "magnycours",
+    country: "France"
   },
   {
     id: 9,
@@ -361,7 +424,8 @@ export const F1_1998_CALENDAR = [
     shortName: "GBR",
     circuit: "Silverstone Circuit, Silverstone",
     date: "12 July 1998",
-    trackId: "silverstone"
+    trackId: "silverstone",
+    country: "United Kingdom"
   },
   {
     id: 10,
@@ -369,7 +433,8 @@ export const F1_1998_CALENDAR = [
     shortName: "AUT",
     circuit: "A1-Ring, Spielberg, Styria",
     date: "26 July 1998",
-    trackId: "a1ring"
+    trackId: "a1ring",
+    country: "Austria"
   },
   {
     id: 11,
@@ -377,7 +442,8 @@ export const F1_1998_CALENDAR = [
     shortName: "GER",
     circuit: "Hockenheimring, Hockenheim",
     date: "2 August 1998",
-    trackId: "hockenheim"
+    trackId: "hockenheim",
+    country: "Germany"
   },
   {
     id: 12,
@@ -385,7 +451,8 @@ export const F1_1998_CALENDAR = [
     shortName: "HUN",
     circuit: "Hungaroring, Mogyoród",
     date: "16 August 1998",
-    trackId: "hungaroring"
+    trackId: "hungaroring",
+    country: "Hungary"
   },
   {
     id: 13,
@@ -393,7 +460,8 @@ export const F1_1998_CALENDAR = [
     shortName: "BEL",
     circuit: "Circuit de Spa-Francorchamps, Stavelot",
     date: "30 August 1998",
-    trackId: "spa"
+    trackId: "spa",
+    country: "Belgium"
   },
   {
     id: 14,
@@ -401,7 +469,8 @@ export const F1_1998_CALENDAR = [
     shortName: "ITA",
     circuit: "Autodromo Nazionale Monza, Monza",
     date: "13 September 1998",
-    trackId: "monza"
+    trackId: "monza",
+    country: "Italy"
   },
   {
     id: 15,
@@ -409,7 +478,8 @@ export const F1_1998_CALENDAR = [
     shortName: "LUX",
     circuit: "Nürburgring, Nürburg",
     date: "27 September 1998",
-    trackId: "nurburgring"
+    trackId: "nurburgring",
+    country: "Germany"
   },
   {
     id: 16,
@@ -417,6 +487,7 @@ export const F1_1998_CALENDAR = [
     shortName: "JPN",
     circuit: "Suzuka Circuit, Suzuka",
     date: "1 November 1998",
-    trackId: "suzuka"
+    trackId: "suzuka",
+    country: "Japan"
   }
 ];
