@@ -1,0 +1,176 @@
+.app {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  color: #e10600; /* F1 red */
+}
+
+button {
+  background-color: #e10600;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #c00500;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  padding: 50px;
+}
+
+.race-calendar {
+  margin-bottom: 40px;
+}
+
+.race-calendar table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.race-calendar th, .race-calendar td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.race-calendar th {
+  background-color: #f2f2f2;
+}
+
+.season-results {
+  overflow-x: auto;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.results-table th, .results-table td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: center;
+}
+
+.results-table th {
+  background-color: #f2f2f2;
+  white-space: nowrap;
+}
+
+.results-table tr:not(.team-secondary-driver) td:first-child {
+  font-weight: bold;
+}
+
+.results-table tr:not(.team-secondary-driver) td:nth-child(2) {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.results-table .points {
+  font-weight: bold;
+  background-color: #f9f9f9;
+}
+
+.results-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.results-table th, .results-table td {
+  padding: 8px 6px;
+}
+
+.results-table td:nth-child(3) {
+  white-space: nowrap;
+}
+
+.championship-section {
+  margin-bottom: 40px;
+}
+
+.championship-section h3 {
+  color: #e10600;
+  border-bottom: 2px solid #e10600;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+/* Team results specific styling */
+.team-results {
+  margin-top: 20px;
+}
+
+.team-results th, .team-results td {
+  padding: 6px 4px;
+}
+
+/* Position coloring - only applied to cells with table-position class */
+.table-position[data-position="1"] {
+  background-color: #ffffbf; /* Gold */
+}
+
+.table-position[data-position="2"] {
+  background-color: #dfdfdf; /* Silver */
+}
+
+.table-position[data-position="3"] {
+  background-color: #ffdf9f; /* Bronze */
+}
+
+.table-position[data-position="4"],
+.table-position[data-position="5"],
+.table-position[data-position="6"] {
+  background-color: #dfffdf; /* Points green */
+}
+
+.table-position[data-position="Ret"] {
+  background-color: #efcfff; /* Retired purple */
+}
+
+/* Non-points positions (7+) */
+.table-position:not([data-position="1"]):not([data-position="2"]):not([data-position="3"]):not([data-position="4"]):not([data-position="5"]):not([data-position="6"]):not([data-position="Ret"]) {
+  background-color: #cfcfff; /* Non-points blue */
+}
+
+/* Pole position (bold) */
+.table-position[data-pole="true"] {
+  font-weight: bold;
+}
+
+/* Fastest lap (italic) - will be applied in addition to position styling */
+.table-position[data-fastestlap="true"] {
+  font-style: italic;
+}
+
+.race-link {
+  cursor: pointer;
+  color: #0af;
+  text-decoration: underline;
+}
+/* Style for child of results-table for left alignment */
+.results-table.race-results-table th,
+.results-table.race-results-table td {
+  text-align: left;
+}
+/* Style for race results table to adjust width */
+.results-table.race-results-table {
+  width: auto; /* Ensure it scales based on content */
+}
