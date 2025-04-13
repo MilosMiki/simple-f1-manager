@@ -272,3 +272,8 @@ button:hover {
 .remove-boost:hover {
   background: #cc0000;
 }
+
+.action-buttons button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

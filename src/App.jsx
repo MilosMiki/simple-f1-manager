@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import * as XLSX from 'xlsx';
 import { F1_1998_DRIVERS, F1_1998_TEAMS, F1_1998_CALENDAR } from './stats/seasons/F11998';
 import SeasonResults from './components/SeasonResults';
 import RaceCalendar from './components/RaceCalendar';
@@ -6,7 +7,138 @@ import TeamPerformanceChart from './components/TeamPerformanceChart';
 import DriverRatings from './components/DriverRatings';
 import { simulateQualifying, simulateRace } from './utils/simulation';
 import RaceResults from './components/RaceResults';
+import { formatTime } from './utils/formatTime';
 import './styles/App.css';
+
+const exportToExcel = (rawRaceResults, seasonResults, teamStandings, drivers, teams, calendar) => {
+  const wb = XLSX.utils.book_new();
+
+  // Helper functions
+  const getDriverById = (driverId) => drivers.find(d => d.id === driverId);
+  const getResultDisplay = (result) => result === null ? '' : (result === 'Ret' ? 'Ret' : result);
+
+  // 1. Create Drivers Championship sheet (same as before)
+  const driversChampionshipData = seasonResults.map((standing, index) => {
+    const driverData = {
+      Position: index + 1,
+      Driver: standing.driver.name,
+      Team: teams.find(t => t.id === standing.driver.teamId)?.name || 'Unknown',
+      Points: standing.points,
+      Poles: standing.poles.filter(Boolean).length,
+      FastestLaps: standing.fastestlaps.filter(Boolean).length
+    };
+    
+    standing.positions.forEach((pos, raceIndex) => {
+      const raceInfo = calendar[raceIndex];
+      if (raceInfo) {
+        driverData[raceInfo.shortName || `Race ${raceIndex + 1}`] = getResultDisplay(pos);
+      }
+    });
+    
+    return driverData;
+  });
+  
+  XLSX.utils.book_append_sheet(
+    wb,
+    XLSX.utils.json_to_sheet(driversChampionshipData),
+    "Drivers Championship"
+  );
+
+  // 2. Create Constructors Championship sheet with both drivers
+  const constructorsChampionshipData = [];
+  
+  teamStandings.forEach((teamEntry, teamIndex) => {
+    // Sort drivers by their ID to maintain consistent order
+    const sortedDrivers = [...teamEntry.drivers].sort((a, b) => a.driver.id - b.driver.id);
+    
+    // Process each driver
+    sortedDrivers.forEach((driverEntry, driverNum) => {
+      const driver = getDriverById(driverEntry.driver.id);
+      const driverRow = {
+        Position: driverNum === 0 ? teamIndex + 1 : '', // Only show position for first driver
+        Team: driverNum === 0 ? teamEntry.team.name : '', // Only show team name for first driver
+        'Car Number': driver?.id || '',
+        Driver: driver?.name || 'Unknown',
+        Points: driverNum === 0 ? teamEntry.points : '' // Only show points for first driver
+      };
+      
+      // Add race results for this driver
+      driverEntry.positions.forEach((pos, raceIndex) => {
+        const raceInfo = calendar[raceIndex];
+        if (raceInfo) {
+          driverRow[raceInfo.shortName || `Race ${raceIndex + 1}`] = getResultDisplay(pos);
+        }
+      });
+      
+      constructorsChampionshipData.push(driverRow);
+    });
+    
+    // Add empty row between teams for better readability
+    constructorsChampionshipData.push({});
+  });
+  
+  XLSX.utils.book_append_sheet(
+    wb,
+    XLSX.utils.json_to_sheet(constructorsChampionshipData),
+    "Constructors Championship"
+  );
+
+  // 3. Create sheets for each race's qualifying and results
+  rawRaceResults.forEach((raceData) => {
+    const qbefore = raceData.qualifying[0];
+    const rbefore = raceData.results[0];
+    const raceInfo = calendar.find(r => r.id === raceData.raceId);
+    if (!raceInfo) return;
+
+    const raceName = raceInfo.name;
+
+    // Qualifying Sheet
+    const qualifyingData = raceData.qualifying.map((driver, index) => ({
+      Position: index + 1,
+      Driver: driver.name,
+      Team: teams.find(t => t.id === driver.teamId)?.name || 'Unknown',
+      Time: formatTime(driver.qualifyingTime) || 'N/A',
+      Gap: "+" + formatTime(driver.qualifyingTime - qbefore.qualifyingTime)
+    }));
+    XLSX.utils.book_append_sheet(
+      wb,
+      XLSX.utils.json_to_sheet(qualifyingData),
+      `${raceName} Q`
+    );
+
+    // Race Results Sheet
+    const raceResultsData = raceData.results.map((result,index) => {
+      var time;
+      if(index == 0)
+        time = formatTime(result.raceTime);
+      else{
+        const gap = result.raceTime - rbefore.raceTime;
+        const laps = Math.floor(gap / qbefore.qualifyingTime);
+        if(laps > 0)
+          time = "+" + laps + " Lap" + (laps > 1 ? "s" : "");
+        else
+          time = "+" + formatTime(gap);
+      }
+      const driver = drivers.find(d => d.id === result.driverId);
+      return {
+        Position: result.position,
+        Driver: driver?.name || 'Unknown',
+        Team: teams.find(t => t.id === driver?.teamId)?.name || 'Unknown',
+        'Grid Position': result.startingPosition,
+        'Time/Reason': result.position === 'Ret' ? `${result.reason}` : time,
+        Points: result.points + (result.isFastestLap ? ' (FL)' : '')
+      };
+    });
+    XLSX.utils.book_append_sheet(
+      wb,
+      XLSX.utils.json_to_sheet(raceResultsData),
+      `${raceName} R`
+    );
+  });
+
+  // Generate and download the file
+  XLSX.writeFile(wb, 'f1_season_results.xlsx');
+};
 
 const TeamManagement = ({ 
   drivers, 
@@ -270,6 +402,7 @@ function App() {
   const [originalTeams] = useState(F1_1998_TEAMS);
   const [drivers, setDrivers] = useState(F1_1998_DRIVERS);
   const [teams, setTeams] = useState(F1_1998_TEAMS);
+  const [calendar, setCalendar] = useState(F1_1998_CALENDAR);
   const [seasonResults, setSeasonResults] = useState([]);
   const [teamResults, setTeamResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -282,7 +415,7 @@ function App() {
   const simulateSeason = async () => {
     const seasonResults = [];
     
-    for (const race of F1_1998_CALENDAR) {
+    for (const race of calendar) {
       const grid = await simulateQualifying(drivers, teams, race.trackId);
       const raceResult = await simulateRace(grid, race.trackId);
       
@@ -307,9 +440,9 @@ function App() {
         driver: driver,
         points: 0,
         results: {},
-        positions: Array(F1_1998_CALENDAR.length).fill(null),
-        poles: Array(F1_1998_CALENDAR.length).fill(false),
-        fastestlaps: Array(F1_1998_CALENDAR.length).fill(false)
+        positions: Array(calendar.length).fill(null),
+        poles: Array(calendar.length).fill(false),
+        fastestlaps: Array(calendar.length).fill(false)
       };
     });
     
@@ -396,7 +529,7 @@ function App() {
         ) : selectedRaceId !== null ? (
           <RaceResults
             race={rawRaceResults.find(r => r.raceId === selectedRaceId)}
-            calendar={F1_1998_CALENDAR}
+            calendar={calendar}
             drivers={drivers}
             teams={teams}
             onBack={() => setSelectedRaceId(null)}
@@ -411,6 +544,12 @@ function App() {
               <button onClick={resetToOriginal}>Reset to Original</button>
               <button onClick={() => setShowRatings(!showRatings)}>
                 {showRatings ? 'Hide Ratings' : 'Show Ratings'}
+              </button>
+              <button 
+                onClick={() => exportToExcel(rawRaceResults, seasonResults, teamResults, drivers, teams, calendar)}
+                disabled={seasonResults.length === 0}
+              >
+                Export Full Results (Excel)
               </button>
             </div>
             {showManagement && (
@@ -427,13 +566,13 @@ function App() {
             {showRatings && ( <DriverRatings drivers={drivers} teams={teams}/> )}
             {showRatings && ( <TeamPerformanceChart teams={teams}/> )}
             <RaceCalendar 
-              calendar={F1_1998_CALENDAR} 
+              calendar={calendar} 
               onRaceClick={(raceId) => setSelectedRaceId(raceId)}
             />
             <SeasonResults 
               standings={seasonResults} 
               teamStandings={teamResults} 
-              calendar={F1_1998_CALENDAR} 
+              calendar={calendar} 
               drivers={drivers} 
               teams={teams}
               onRaceClick={(raceId) => setSelectedRaceId(raceId)}

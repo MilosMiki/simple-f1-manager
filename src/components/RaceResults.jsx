@@ -91,7 +91,7 @@ const RaceResults = ({ race, drivers, teams, calendar, onBack }) => {
               if(laps > 0)
                 time = "+" + laps + " Lap" + (laps > 1 ? "s" : "");
               else
-                time = "+" + formatTime(r.raceTime - rbefore.raceTime);
+                time = "+" + formatTime(gap);
             }
             return (
               <tr key={r.driverId} style={{ fontWeight: r.points > 0 ? 'bold' : 'normal' }}>
