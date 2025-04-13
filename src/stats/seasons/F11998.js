@@ -57,7 +57,7 @@ export const F1_1998_TEAMS = [
     chassis: 86,
     engine: 100,
     tyreConservation: 80,
-    color: "#005AFF", // Dark Blue (from the livery, visible on white)
+    color: "#880000", // Dark Blue (from the livery, visible on white)
   },
   {
     id: 4,
@@ -68,7 +68,7 @@ export const F1_1998_TEAMS = [
     chassis: 84,
     engine: 95,
     tyreConservation: 78,
-    color: "#00A3E0", // Sky Blue (visible on white)
+    color: "#00aaff", // Sky Blue (visible on white)
   },
   {
     id: 5,
@@ -148,9 +148,9 @@ export const F1_1998_TEAMS = [
     color: "#008000", // Gold/Yellow (from PIAA logos, visible on white)
   },
 ];
-
 export const F1_1998_DRIVERS = [
   {
+    no: 1,
     id: 1,
     name: "Mika Häkkinen",
     country: "Finland",
@@ -162,6 +162,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 94 // Skill in overtaking, defending, and strategy execution during a race
   },
   {
+    no: 2,
     id: 2,
     name: "David Coulthard",
     country: "United Kingdom",
@@ -173,6 +174,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 87
   },
   {
+    no: 3,
     id: 3,
     name: "Michael Schumacher",
     country: "Germany",
@@ -184,6 +186,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 99
   },
   {
+    no: 4,
     id: 4,
     name: "Eddie Irvine",
     country: "United Kingdom",
@@ -195,6 +198,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 80
   },
   {
+    no: 5,
     id: 5,
     name: "Jacques Villeneuve",
     country: "Canada",
@@ -206,6 +210,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 84
   },
   {
+    no: 6,
     id: 6,
     name: "Heinz-Harald Frentzen",
     country: "Germany",
@@ -217,6 +222,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 79
   },
   {
+    no: 7,
     id: 7,
     name: "Giancarlo Fisichella",
     country: "Italy",
@@ -228,6 +234,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 81
   },
   {
+    no: 8,
     id: 8,
     name: "Alexander Wurz",
     country: "Austria",
@@ -239,6 +246,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 75
   },
   {
+    no: 9,
     id: 9,
     name: "Damon Hill",
     country: "United Kingdom",
@@ -250,6 +258,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 82
   },
   {
+    no: 10,
     id: 10,
     name: "Ralf Schumacher",
     country: "Germany",
@@ -261,6 +270,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 77
   },
   {
+    no: 11,
     id: 11,
     name: "Jean Alesi",
     country: "France",
@@ -272,6 +282,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 78
   },
   {
+    no: 12,
     id: 12,
     name: "Johnny Herbert",
     country: "United Kingdom",
@@ -283,6 +294,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 73
   },
   {
+    no: 14,
     id: 13,
     name: "Mika Salo",
     country: "Finland",
@@ -294,6 +306,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 71
   },
   {
+    no: 15,
     id: 14,
     name: "Pedro Diniz",
     country: "Brazil",
@@ -305,6 +318,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 65
   },
   {
+    no: 16,
     id: 15,
     name: "Rubens Barrichello",
     country: "Brazil",
@@ -316,6 +330,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 83
   },
   {
+    no: 17,
     id: 16,
     name: "Jan Magnussen",
     country: "Denmark",
@@ -327,6 +342,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 60
   },
   {
+    no: 18,
     id: 17,
     name: "Jarno Trulli",
     country: "Italy",
@@ -338,6 +354,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 70
   },
   {
+    no: 19,
     id: 18,
     name: "Olivier Panis",
     country: "France",
@@ -349,6 +366,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 76
   },
   {
+    no: 20,
     id: 19,
     name: "Shinji Nakano",
     country: "Japan",
@@ -360,6 +378,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 63
   },
   {
+    no: 21,
     id: 20,
     name: "Esteban Tuero",
     country: "Argentina",
@@ -371,6 +390,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 57
   },
   {
+    no: 22,
     id: 21,
     name: "Ricardo Rosset",
     country: "Brazil",
@@ -382,6 +402,7 @@ export const F1_1998_DRIVERS = [
     racecraft: 50
   },
   {
+    no: 23,
     id: 22,
     name: "Toranosuke Takagi",
     country: "Japan",

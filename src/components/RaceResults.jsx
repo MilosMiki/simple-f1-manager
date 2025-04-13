@@ -1,5 +1,3 @@
-import ReactCountryFlag from "react-country-flag";
-import { countries } from 'country-code-lookup';
 import { getCountryFlag } from '../utils/getCountryFlag';
 import { formatTime } from '../utils/formatTime';
 
@@ -11,17 +9,6 @@ const RaceResults = ({ race, drivers, teams, calendar, onBack }) => {
   const getTeam = (id) => teams.find(d => d.id === id);
   const qbefore = race.qualifying[0];
   const rbefore = race.results[0];
-
-  // Helper function to convert country name to ISO code
-  const getCountryCode = (countryName) => {
-    if (!countryName) return null;
-    const country = countries.find(c => 
-      c.country.toLowerCase() === countryName.toLowerCase() ||
-      (c.iso2 && c.iso2.toLowerCase() === countryName.toLowerCase()) ||
-      (c.iso3 && c.iso3.toLowerCase() === countryName.toLowerCase())
-    );
-    return country?.iso2 || null;
-  };
 
   return (
     <div className="race-details">

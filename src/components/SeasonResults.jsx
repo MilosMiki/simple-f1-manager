@@ -1,7 +1,17 @@
 import { useMemo } from 'react';
 import { getCountryFlag } from '../utils/getCountryFlag';
 
-const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onRaceClick, selectedSeason }) => {
+function findIndexOfFlooredOne(array) {
+  for (let i = 0; i < array.length; i++) {
+    if (Math.floor(array[i]) === 0) {
+      return i; // Return the index if the floored value is 0
+    }
+  }
+  return -1; // Return -1 if no such element is found
+}
+
+const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onRaceClick, selectedSeason, pointsSystem = [] }) => {
+  const maxPositionPoints = findIndexOfFlooredOne(pointsSystem); //bc the array starts from 0, reading the first instance of 0 points should be the position
   const getDriverById = (driverId) => {
     return drivers.find(d => d.id === driverId);
   };
@@ -28,7 +38,7 @@ const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onR
         return {
           ...driverEntry,
           driverInfo: driver,
-          carNumber: driver?.id
+          carNumber: driver?.no
         };
       });
 
@@ -80,7 +90,7 @@ const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onR
                     <td>{team?.name}</td>
                     {standing.positions.map((pos, i) => (
                       <td 
-                        className="table-position"
+                        className={pos <= maxPositionPoints ? "table-position-points" : "table-position"}
                         key={`driver-${standing.driver.id}-${i}`}
                         data-position={pos}
                         data-pole={standing.poles?.[i] || false}
@@ -127,7 +137,7 @@ const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onR
                     <td>{standing.teamDrivers[0]?.carNumber}</td>
                     {standing.teamDrivers[0]?.positions.map((pos, i) => (
                       <td 
-                        className="table-position"
+                        className={pos <= maxPositionPoints ? "table-position-points" : "table-position"}
                         data-position={pos}
                         data-pole={standing.teamDrivers[0]?.poles?.[i] || false}
                         data-fastestlap={standing.teamDrivers[0]?.fastestlaps?.[i] || false}
@@ -142,7 +152,7 @@ const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onR
                     <td>{standing.teamDrivers[1]?.carNumber}</td>
                     {standing.teamDrivers[1]?.positions.map((pos, i) => (
                       <td 
-                        className="table-position"
+                        className={pos <= maxPositionPoints ? "table-position-points" : "table-position"}
                         data-position={pos}
                         data-pole={standing.teamDrivers[1]?.poles?.[i] || false}
                         data-fastestlap={standing.teamDrivers[1]?.fastestlaps?.[i] || false}

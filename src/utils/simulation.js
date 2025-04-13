@@ -123,8 +123,6 @@ export const simulateRace = async (qualifyingGrid, trackId, pointsTable, pointsF
   // Sort finished drivers by raceTime (fastest wins)
   finishedDrivers.sort((a, b) => a.raceTime - b.raceTime);
 
-  // Assign points (1998 system)
-
   const raceResults = finishedDrivers.map((driver, index) => ({
     driverId: driver.id,
     position: index + 1,

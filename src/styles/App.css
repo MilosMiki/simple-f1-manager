@@ -31,7 +31,7 @@ button:hover {
 
 .loading {
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
   padding: 50px;
 }
 
@@ -40,19 +40,27 @@ button:hover {
 }
 
 .race-calendar table {
-  width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
+.race-calendar th:first-child{
+  padding: 6px 6px;
+}
+
 .race-calendar th, .race-calendar td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 2px 6px;
   text-align: left;
 }
 
 .race-calendar th {
   background-color: #f2f2f2;
+}
+
+.race-calendar td:first-child {
+  font-weight: bold;
+  text-align: center;
 }
 
 .season-results {
@@ -67,7 +75,6 @@ button:hover {
 
 .results-table th, .results-table td {
   border: 1px solid #ddd;
-  padding: 6px;
   text-align: center;
 }
 
@@ -76,11 +83,19 @@ button:hover {
   white-space: nowrap;
 }
 
+.results-table th:first-child{
+  padding: 6px 6px;
+}
+
 .results-table tr:not(.team-secondary-driver) td:first-child {
   font-weight: bold;
 }
 
 .results-table tr:not(.team-secondary-driver) td:nth-child(2) {
+  text-align: left;
+  white-space: nowrap;
+}
+.results-table tr:not(.team-secondary-driver,.team-primary-driver) td:nth-child(3) { /* dont apply this styling in the teams table, 3rd column */
   text-align: left;
   white-space: nowrap;
 }
@@ -95,7 +110,7 @@ button:hover {
 }
 
 .results-table th, .results-table td {
-  padding: 8px 6px;
+  padding: 3px 6px;
 }
 
 .results-table td:nth-child(3) {
@@ -123,21 +138,19 @@ button:hover {
 }
 
 /* Position coloring - only applied to cells with table-position class */
-.table-position[data-position="1"] {
+.table-position-points[data-position="1"] {
   background-color: #ffffbf; /* Gold */
 }
 
-.table-position[data-position="2"] {
+.table-position-points[data-position="2"] {
   background-color: #dfdfdf; /* Silver */
 }
 
-.table-position[data-position="3"] {
+.table-position-points[data-position="3"] {
   background-color: #ffdf9f; /* Bronze */
 }
 
-.table-position[data-position="4"],
-.table-position[data-position="5"],
-.table-position[data-position="6"] {
+.table-position-points {
   background-color: #dfffdf; /* Points green */
 }
 
@@ -146,17 +159,17 @@ button:hover {
 }
 
 /* Non-points positions (7+) */
-.table-position:not([data-position="1"]):not([data-position="2"]):not([data-position="3"]):not([data-position="4"]):not([data-position="5"]):not([data-position="6"]):not([data-position="Ret"]) {
+.table-position:not([data-position="Ret"]) {
   background-color: #cfcfff; /* Non-points blue */
 }
 
 /* Pole position (bold) */
-.table-position[data-pole="true"] {
+.table-position[data-pole="true"],.table-position-points[data-pole="true"] {
   font-weight: bold;
 }
 
 /* Fastest lap (italic) - will be applied in addition to position styling */
-.table-position[data-fastestlap="true"] {
+.table-position[data-fastestlap="true"],.table-position-points[data-fastestlap="true"] {
   font-style: italic;
 }
 

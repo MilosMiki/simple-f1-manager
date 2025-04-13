@@ -57,7 +57,7 @@ export const F1_1999_TEAMS = [
     chassis: 85,
     engine: 88, // Less powerful engine than 1998
     tyreConservation: 82,
-    color: "#005AFF", // Dark Blue
+    color: "#880000", // Dark Blue
   },
   {
     id: 4,
@@ -79,7 +79,7 @@ export const F1_1999_TEAMS = [
     chassis: 82,
     engine: 90,
     tyreConservation: 80,
-    color: "#00A3E0", // Sky Blue
+    color: "#00aaff", // Sky Blue
   },
   {
     id: 6,
@@ -145,13 +145,14 @@ export const F1_1999_TEAMS = [
     chassis: 75,
     engine: 88,
     tyreConservation: 70,
-    color: "#FF0000", // Red/White (primary red)
+    color: "#FFaaaa", // Red/White (primary red)
   },
 ];
 
 export const F1_1999_DRIVERS = [
   // McLaren
   {
+    no: 1,
     id: 1,
     name: "Mika Häkkinen",
     country: "Finland",
@@ -163,6 +164,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 95
   },
   {
+    no: 2,
     id: 2,
     name: "David Coulthard",
     country: "United Kingdom",
@@ -175,6 +177,7 @@ export const F1_1999_DRIVERS = [
   },
   // Ferrari
   {
+    no: 3,
     id: 3,
     name: "Michael Schumacher",
     country: "Germany",
@@ -186,6 +189,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 99
   },
   {
+    no: 4,
     id: 4,
     name: "Eddie Irvine",
     country: "United Kingdom",
@@ -198,6 +202,7 @@ export const F1_1999_DRIVERS = [
   },
   // Williams
   {
+    no: 5,
     id: 5,
     name: "Ralf Schumacher",
     country: "Germany",
@@ -209,6 +214,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 80
   },
   {
+    no: 6,
     id: 6,
     name: "Alex Zanardi",
     country: "Italy",
@@ -221,17 +227,19 @@ export const F1_1999_DRIVERS = [
   },
   // Jordan
   {
+    no: 7,
     id: 7,
     name: "Damon Hill",
     country: "United Kingdom",
     teamId: 4,
-    performance: 65, // Final season
+    performance: 30, // Final season
     reliability: 65,
     consistency: 82,
     tyreConservation: 88,
     racecraft: 85
   },
   {
+    no: 8,
     id: 8,
     name: "Heinz-Harald Frentzen",
     country: "Germany",
@@ -244,6 +252,7 @@ export const F1_1999_DRIVERS = [
   },
   // Benetton
   {
+    no: 9,
     id: 9,
     name: "Giancarlo Fisichella",
     country: "Italy",
@@ -255,6 +264,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 84
   },
   {
+    no: 10,
     id: 10,
     name: "Alexander Wurz",
     country: "Austria",
@@ -267,6 +277,7 @@ export const F1_1999_DRIVERS = [
   },
   // Stewart
   {
+    no: 11,
     id: 11,
     name: "Rubens Barrichello",
     country: "Brazil",
@@ -278,6 +289,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 86
   },
   {
+    no: 12,
     id: 12,
     name: "Johnny Herbert",
     country: "United Kingdom",
@@ -290,6 +302,7 @@ export const F1_1999_DRIVERS = [
   },
   // Sauber
   {
+    no: 16,
     id: 13,
     name: "Jean Alesi",
     country: "France",
@@ -301,6 +314,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 80
   },
   {
+    no: 17,
     id: 14,
     name: "Pedro Diniz",
     country: "Brazil",
@@ -313,6 +327,7 @@ export const F1_1999_DRIVERS = [
   },
   // Arrows
   {
+    no: 18,
     id: 15,
     name: "Pedro de la Rosa",
     country: "Spain",
@@ -324,6 +339,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 68
   },
   {
+    no: 19,
     id: 16,
     name: "Tora Takagi",
     country: "Japan",
@@ -336,6 +352,7 @@ export const F1_1999_DRIVERS = [
   },
   // Prost
   {
+    no: 14,
     id: 17,
     name: "Olivier Panis",
     country: "France",
@@ -347,6 +364,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 78
   },
   {
+    no: 15,
     id: 18,
     name: "Jarno Trulli",
     country: "Italy",
@@ -359,6 +377,7 @@ export const F1_1999_DRIVERS = [
   },
   // Minardi
   {
+    no: 20,
     id: 19,
     name: "Marc Gené",
     country: "Spain",
@@ -370,6 +389,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 65
   },
   {
+    no: 21,
     id: 20,
     name: "Luca Badoer",
     country: "Italy",
@@ -382,6 +402,7 @@ export const F1_1999_DRIVERS = [
   },
   // BAR
   {
+    no: 22,
     id: 21,
     name: "Jacques Villeneuve",
     country: "Canada",
@@ -393,6 +414,7 @@ export const F1_1999_DRIVERS = [
     racecraft: 86
   },
   {
+    no: 23,
     id: 22,
     name: "Ricardo Zonta",
     country: "Brazil",

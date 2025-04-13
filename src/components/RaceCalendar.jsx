@@ -1,3 +1,5 @@
+import { getCountryFlag } from '../utils/getCountryFlag';
+
 const RaceCalendar = ({ calendar, onRaceClick, selectedSeason }) => {
   return (
     <div className="race-calendar">
@@ -17,7 +19,7 @@ const RaceCalendar = ({ calendar, onRaceClick, selectedSeason }) => {
             <tr key={race.id}>
               <td>{race.id}</td>
               <td>{race.name}</td>
-              <td>{race.circuit}</td>
+              <td>{getCountryFlag(race.country)} {race.circuit}</td>
               <td>{race.date}</td>
               <td>
                 <span className="race-link" onClick={() => onRaceClick?.(race.id)}>

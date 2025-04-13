@@ -15,8 +15,8 @@ const DriverRatings = ({ drivers = [], teams = [] }) => {
   const calculateDriverRating = (driver) => {
     // Weighted formula (adjust weights as needed)
     return Math.round(
-      (driver.performance * 0.3) +
-      (driver.racecraft * 0.25) +
+      (driver.performance * 0.4) +
+      (driver.racecraft * 0.15) +
       (driver.consistency * 0.15) +
       (driver.tyreConservation * 0.25) +
       (driver.reliability * 0.05)

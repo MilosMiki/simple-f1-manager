@@ -2,6 +2,15 @@ import { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import { F1_1998_DRIVERS, F1_1998_TEAMS, F1_1998_CALENDAR, F1_1998_POINTS_SYSTEM, F1_1998_POINTS_FL, F1_1998_POINTS_POLE } from './stats/seasons/F11998';
 import { F1_1999_DRIVERS, F1_1999_TEAMS, F1_1999_CALENDAR, F1_1999_POINTS_SYSTEM, F1_1999_POINTS_FL, F1_1999_POINTS_POLE } from './stats/seasons/F11999';
+import { F1_2000_DRIVERS, F1_2000_TEAMS, F1_2000_CALENDAR, F1_2000_POINTS_SYSTEM, F1_2000_POINTS_FL, F1_2000_POINTS_POLE } from './stats/seasons/F12000';
+import { F1_2001_DRIVERS, F1_2001_TEAMS, F1_2001_CALENDAR, F1_2001_POINTS_SYSTEM, F1_2001_POINTS_FL, F1_2001_POINTS_POLE } from './stats/seasons/F12001';
+import { F1_2002_DRIVERS, F1_2002_TEAMS, F1_2002_CALENDAR, F1_2002_POINTS_SYSTEM, F1_2002_POINTS_FL, F1_2002_POINTS_POLE } from './stats/seasons/F12002';
+import { F1_2003_DRIVERS, F1_2003_TEAMS, F1_2003_CALENDAR, F1_2003_POINTS_SYSTEM, F1_2003_POINTS_FL, F1_2003_POINTS_POLE } from './stats/seasons/F12003';
+import { F1_2004_DRIVERS, F1_2004_TEAMS, F1_2004_CALENDAR, F1_2004_POINTS_SYSTEM, F1_2004_POINTS_FL, F1_2004_POINTS_POLE } from './stats/seasons/F12004';
+import { F1_2005_DRIVERS, F1_2005_TEAMS, F1_2005_CALENDAR, F1_2005_POINTS_SYSTEM, F1_2005_POINTS_FL, F1_2005_POINTS_POLE } from './stats/seasons/F12005';
+import { F1_2006_DRIVERS, F1_2006_TEAMS, F1_2006_CALENDAR, F1_2006_POINTS_SYSTEM, F1_2006_POINTS_FL, F1_2006_POINTS_POLE } from './stats/seasons/F12006';
+import { F1_2007_DRIVERS, F1_2007_TEAMS, F1_2007_CALENDAR, F1_2007_POINTS_SYSTEM, F1_2007_POINTS_FL, F1_2007_POINTS_POLE } from './stats/seasons/F12007';
+
 import SeasonResults from './components/SeasonResults';
 import RaceCalendar from './components/RaceCalendar';
 import TeamPerformanceChart from './components/TeamPerformanceChart';
@@ -28,6 +37,70 @@ const SEASONS = {
     pointsSystem: F1_1999_POINTS_SYSTEM,
     pointsFL: F1_1999_POINTS_FL,
     pointsPole: F1_1999_POINTS_POLE
+  },
+  2000: {
+    drivers: F1_2000_DRIVERS,
+    teams: F1_2000_TEAMS,
+    calendar: F1_2000_CALENDAR,
+    pointsSystem: F1_2000_POINTS_SYSTEM,
+    pointsFL: F1_2000_POINTS_FL,
+    pointsPole: F1_2000_POINTS_POLE
+  },
+  2001: {
+    drivers: F1_2001_DRIVERS,
+    teams: F1_2001_TEAMS,
+    calendar: F1_2001_CALENDAR,
+    pointsSystem: F1_2001_POINTS_SYSTEM,
+    pointsFL: F1_2001_POINTS_FL,
+    pointsPole: F1_2001_POINTS_POLE
+  },
+  2002: {
+    drivers: F1_2002_DRIVERS,
+    teams: F1_2002_TEAMS,
+    calendar: F1_2002_CALENDAR,
+    pointsSystem: F1_2002_POINTS_SYSTEM,
+    pointsFL: F1_2002_POINTS_FL,
+    pointsPole: F1_2002_POINTS_POLE
+  },
+  2003: {
+    drivers: F1_2003_DRIVERS,
+    teams: F1_2003_TEAMS,
+    calendar: F1_2003_CALENDAR,
+    pointsSystem: F1_2003_POINTS_SYSTEM,
+    pointsFL: F1_2003_POINTS_FL,
+    pointsPole: F1_2003_POINTS_POLE
+  },
+  2004: {
+    drivers: F1_2004_DRIVERS,
+    teams: F1_2004_TEAMS,
+    calendar: F1_2004_CALENDAR,
+    pointsSystem: F1_2004_POINTS_SYSTEM,
+    pointsFL: F1_2004_POINTS_FL,
+    pointsPole: F1_2004_POINTS_POLE
+  },  
+  2005: {
+    drivers: F1_2005_DRIVERS,
+    teams: F1_2005_TEAMS,
+    calendar: F1_2005_CALENDAR,
+    pointsSystem: F1_2005_POINTS_SYSTEM,
+    pointsFL: F1_2005_POINTS_FL,
+    pointsPole: F1_2005_POINTS_POLE
+  },  
+  2006: {
+    drivers: F1_2006_DRIVERS,
+    teams: F1_2006_TEAMS,
+    calendar: F1_2006_CALENDAR,
+    pointsSystem: F1_2006_POINTS_SYSTEM,
+    pointsFL: F1_2006_POINTS_FL,
+    pointsPole: F1_2006_POINTS_POLE
+  },  
+  2007: {
+    drivers: F1_2007_DRIVERS,
+    teams: F1_2007_TEAMS,
+    calendar: F1_2007_CALENDAR,
+    pointsSystem: F1_2007_POINTS_SYSTEM,
+    pointsFL: F1_2007_POINTS_FL,
+    pointsPole: F1_2007_POINTS_POLE
   }
   // Add more seasons here as you create them
 };
@@ -421,11 +494,11 @@ const TeamManagement = ({
 
 function App() {
   const [selectedSeason, setSelectedSeason] = useState(1998); // Default to 1998
-  const [originalDrivers, setOriginalDrivers] = useState(SEASONS[1998].drivers);
-  const [originalTeams, setOriginalTeams] = useState(SEASONS[1998].teams);
-  const [drivers, setDrivers] = useState(SEASONS[1998].drivers);
-  const [teams, setTeams] = useState(SEASONS[1998].teams);
-  const [calendar, setCalendar] = useState(SEASONS[1998].calendar);
+  const [originalDrivers, setOriginalDrivers] = useState(SEASONS[selectedSeason].drivers);
+  const [originalTeams, setOriginalTeams] = useState(SEASONS[selectedSeason].teams);
+  const [drivers, setDrivers] = useState(SEASONS[selectedSeason].drivers);
+  const [teams, setTeams] = useState(SEASONS[selectedSeason].teams);
+  const [calendar, setCalendar] = useState(SEASONS[selectedSeason].calendar);
   const [seasonResults, setSeasonResults] = useState([]);
   const [teamResults, setTeamResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -434,9 +507,9 @@ function App() {
   const [showManagement, setShowManagement] = useState(false);
   const [showRatings, setShowRatings] = useState(false);
   const [teamBoosts, setTeamBoosts] = useState([]);
-  const [pointsSystem, setPointsSystem] = useState(SEASONS[1998].pointsSystem);
-  const [pointsFL, setPointsFL] = useState(SEASONS[1998].pointsFL);
-  const [pointsPole, setPointsPole] = useState(SEASONS[1998].pointsPole);
+  const [pointsSystem, setPointsSystem] = useState(SEASONS[selectedSeason].pointsSystem);
+  const [pointsFL, setPointsFL] = useState(SEASONS[selectedSeason].pointsFL);
+  const [pointsPole, setPointsPole] = useState(SEASONS[selectedSeason].pointsPole);
 
   // Add season change handler
   const handleSeasonChange = (season) => {
@@ -475,7 +548,7 @@ function App() {
     const standings = {};
     
     // Initialize all drivers with 0 points
-    F1_1998_DRIVERS.forEach(driver => {
+    drivers.forEach(driver => {
       standings[driver.id] = {
         driver: driver,
         points: 0,
@@ -631,6 +704,7 @@ function App() {
               teams={teams}
               onRaceClick={(raceId) => setSelectedRaceId(raceId)}
               selectedSeason={selectedSeason}
+              pointsSystem={pointsSystem}
             />
           </>
         )}
