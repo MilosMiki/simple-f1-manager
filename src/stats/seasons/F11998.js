@@ -2,101 +2,123 @@ export const F1_1998_TEAMS = [
   {
     id: 1,
     name: "McLaren-Mercedes",
+    shortName: "McLaren",
     country: "United Kingdom",
     reliability: 85,
     chassis: 97,
     engine: 95,
-    tyreConservation: 90
+    tyreConservation: 90,
+    color: "#808080", // Gray
   },
   {
     id: 2,
     name: "Ferrari",
+    shortName: "Ferrari",
     country: "Italy",
     reliability: 95,
     chassis: 95,
     engine: 94,
-    tyreConservation: 88
+    tyreConservation: 88,
+    color: "#DC0000", // Rosso Corsa (Red, visible on white)
   },
   {
     id: 3,
     name: "Williams-Mecachrome",
+    shortName: "Williams",
     country: "United Kingdom",
     reliability: 78,
     chassis: 86,
     engine: 100,
-    tyreConservation: 80
+    tyreConservation: 80,
+    color: "#005AFF", // Dark Blue (from the livery, visible on white)
   },
   {
     id: 4,
     name: "Benetton-Playlife",
+    shortName: "Benetton",
     country: "Italy",
     reliability: 76,
     chassis: 84,
     engine: 95,
-    tyreConservation: 78
+    tyreConservation: 78,
+    color: "#00A3E0", // Sky Blue (visible on white)
   },
   {
     id: 5,
     name: "Jordan-Mugen-Honda",
+    shortName: "Jordan",
     country: "Ireland",
     reliability: 67,
     chassis: 83,
     engine: 81,
-    tyreConservation: 100
+    tyreConservation: 100,
+    color: "#FFD700", // Yellow (visible on white)
   },
   {
     id: 6,
     name: "Sauber-Petronas",
+    shortName: "Sauber",
     country: "Switzerland",
     reliability: 74,
     chassis: 81,
     engine: 77,
-    tyreConservation: 87
+    tyreConservation: 87,
+    color: "#008080", // Teal (secondary color from Petronas, visible on white)
   },
   {
     id: 7,
     name: "Arrows",
+    shortName: "Arrows",
     country: "United Kingdom",
     reliability: 45,
     chassis: 89,
     engine: 70,
-    tyreConservation: 75
+    tyreConservation: 75,
+    color: "#000000", // Danka Arrows
   },
   {
     id: 8,
     name: "Stewart-Ford",
+    shortName: "Stewart",
     country: "United Kingdom",
     reliability: 50,
     chassis: 77,
     engine: 74,
-    tyreConservation: 90
+    tyreConservation: 90,
+    color: "#BDBDBD", // Dark Green (visible on white)
   },
   {
     id: 9,
     name: "Prost-Peugeot",
+    shortName: "Prost",
     country: "France",
     reliability: 50,
     chassis: 76,
     engine: 73,
-    tyreConservation: 80
+    tyreConservation: 80,
+    color: "#0000FF", // Blue (visible on white)
   },
   {
     id: 10,
     name: "Minardi-Ford",
+    shortName: "Minardi",
     country: "Italy",
     reliability: 55,
     chassis: 73,
     engine: 70,
-    tyreConservation: 73
+    tyreConservation: 73,
+    color: "#87CEEB", // Sky Blue (often seen as an accent on Minardi cars, visible on white)
   },
   {
     id: 11,
     name: "Tyrrell-Ford",
+    shortName: "Tyrrell",
     country: "United Kingdom",
     reliability: 64,
     chassis: 72,
     engine: 69,
-    tyreConservation: 72
+    tyreConservation: 72,
+    color: "#008000", // Gold/Yellow (from PIAA logos, visible on white)
   },
 ];
 

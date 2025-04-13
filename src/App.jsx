@@ -5,6 +5,8 @@ import RaceCalendar from './components/RaceCalendar';
 import './styles/App.css';
 import { simulateQualifying, simulateRace } from './utils/simulation';
 import RaceResults from './components/RaceResults';
+import TeamPerformanceChart from './components/TeamPerformanceChart';
+import DriverRatings from './components/DriverRatings';
 
 function App() {
   const [seasonResults, setSeasonResults] = useState([]);
@@ -128,6 +130,8 @@ function App() {
       </header>
       
       <main>
+        <TeamPerformanceChart />
+        <DriverRatings />
         {isLoading ? (
           <div className="loading">Simulating season...</div>
         ) : selectedRaceId !== null ? (

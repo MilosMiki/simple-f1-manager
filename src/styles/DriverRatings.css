@@ -1,0 +1,72 @@
+.driver-ratings {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.driver-ratings h2 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #222;
+  text-align: center;
+}
+
+.ratings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.driver-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.driver-info {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}
+
+.driver-name {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-name {
+  font-size: 10px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.rating-bar-container {
+  flex-grow: 1;
+  height: 14px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.rating-bar {
+  height: 100%;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.rating-value {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 2px rgba(0,0,0,0.5);
+}

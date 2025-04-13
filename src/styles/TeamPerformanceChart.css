@@ -1,0 +1,90 @@
+.team-performance-chart {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.team-performance-chart h2 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #222;
+  text-align: center;
+}
+
+.chart-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chart-row {
+  display: flex;
+  gap: 16px;
+}
+
+.attribute-container {
+  flex: 1;
+  min-width: 0;
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.attribute-container h3 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  text-align: center;
+}
+
+.bars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.team-name {
+  width: 50px;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-background {
+  flex-grow: 1;
+  height: 16px;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  min-width: 80px;
+}
+
+.bar-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.bar-value {
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 9px;
+  font-weight: bold;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 0 0 1px white;
+}
