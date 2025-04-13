@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { getCountryFlag } from '../utils/getCountryFlag';
 
-const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onRaceClick }) => {
+const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onRaceClick, selectedSeason }) => {
   const getDriverById = (driverId) => {
     return drivers.find(d => d.id === driverId);
   };
@@ -47,7 +47,7 @@ const SeasonResults = ({ standings, teamStandings, calendar, drivers, teams, onR
 
   return (
     <div className="season-results">
-      <h2>1998 FIA Formula One World Championship</h2>
+      <h2>{selectedSeason} FIA Formula One World Championship</h2>
 
       {/* Drivers' Championship */}
       <div className="championship-section">

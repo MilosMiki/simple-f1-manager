@@ -1,7 +1,7 @@
-const RaceCalendar = ({ calendar, onRaceClick }) => {
+const RaceCalendar = ({ calendar, onRaceClick, selectedSeason }) => {
   return (
     <div className="race-calendar">
-      <h2>1998 Season Calendar</h2>
+      <h2>{selectedSeason} Season Calendar</h2>
       <table>
         <thead>
           <tr>
