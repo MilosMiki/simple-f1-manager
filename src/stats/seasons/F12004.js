@@ -487,7 +487,7 @@ export const F1_2004_CALENDAR = [
     shortName: "GER",
     circuit: "Hockenheimring, Hockenheim",
     date: "25 July 2004",
-    trackId: "hockenheim",
+    trackId: "hockenheimnew",
     country: "Germany"
   },
   {

@@ -101,7 +101,7 @@ export const F1_2005_TEAMS = [
     chassis: 88,
     engine: 84,
     tyreConservation: 89,
-    color: "#004190", // Dark Blue (keeping the 2005 color as Red Bull was a new team with a distinct color)
+    color: "#5a00ee", // Dark Blue (keeping the 2005 color as Red Bull was a new team with a distinct color)
   },
   {
     id: 8,
@@ -487,7 +487,7 @@ export const F1_2005_CALENDAR = [
     shortName: "GER",
     circuit: "Hockenheimring, Hockenheim",
     date: "24 July 2005",
-    trackId: "hockenheim",
+    trackId: "hockenheimnew",
     country: "Germany"
   },
   {

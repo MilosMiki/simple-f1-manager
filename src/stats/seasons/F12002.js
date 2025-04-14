@@ -522,7 +522,7 @@ export const F1_2002_CALENDAR = [
     shortName: "GER",
     circuit: "Hockenheimring, Hockenheim",
     date: "28 July 2002",
-    trackId: "hockenheim",
+    trackId: "hockenheimnew",
     country: "Germany"
   },
   {

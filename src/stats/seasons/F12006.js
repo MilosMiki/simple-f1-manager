@@ -102,7 +102,7 @@ export const F1_2006_TEAMS = [
     chassis: 90,
     engine: 92,
     tyreConservation: 89,
-    color: "#008000", // Jaguar Green (from 2002)
+    color: "#5a00ee", // Jaguar Green (from 2002)
   },
   {
     id: 8,
@@ -523,7 +523,7 @@ export const F1_2006_CALENDAR = [
     shortName: "GER",
     circuit: "Hockenheimring, Hockenheim",
     date: "30 July 2006",
-    trackId: "hockenheim",
+    trackId: "hockenheimnew",
     country: "Germany"
   },
   {

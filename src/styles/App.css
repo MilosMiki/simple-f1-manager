@@ -1,6 +1,5 @@
 .app {
   font-family: Arial, sans-serif;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -68,7 +67,6 @@ button:hover {
 }
 
 .results-table {
-  width: 100%;
   border-collapse: collapse;
   font-size: 14px;
 }
@@ -176,6 +174,8 @@ button:hover {
 .race-link {
   cursor: pointer;
   color: #0af;
+}
+.race-link:hover {
   text-decoration: underline;
 }
 /* Style for child of results-table for left alignment */

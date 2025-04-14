@@ -10,6 +10,17 @@ import { F1_2004_DRIVERS, F1_2004_TEAMS, F1_2004_CALENDAR, F1_2004_POINTS_SYSTEM
 import { F1_2005_DRIVERS, F1_2005_TEAMS, F1_2005_CALENDAR, F1_2005_POINTS_SYSTEM, F1_2005_POINTS_FL, F1_2005_POINTS_POLE } from './stats/seasons/F12005';
 import { F1_2006_DRIVERS, F1_2006_TEAMS, F1_2006_CALENDAR, F1_2006_POINTS_SYSTEM, F1_2006_POINTS_FL, F1_2006_POINTS_POLE } from './stats/seasons/F12006';
 import { F1_2007_DRIVERS, F1_2007_TEAMS, F1_2007_CALENDAR, F1_2007_POINTS_SYSTEM, F1_2007_POINTS_FL, F1_2007_POINTS_POLE } from './stats/seasons/F12007';
+import { F1_2008_DRIVERS, F1_2008_TEAMS, F1_2008_CALENDAR, F1_2008_POINTS_SYSTEM, F1_2008_POINTS_FL, F1_2008_POINTS_POLE } from './stats/seasons/F12008';
+import { F1_2009_DRIVERS, F1_2009_TEAMS, F1_2009_CALENDAR, F1_2009_POINTS_SYSTEM, F1_2009_POINTS_FL, F1_2009_POINTS_POLE } from './stats/seasons/F12009';
+import { F1_2010_DRIVERS, F1_2010_TEAMS, F1_2010_CALENDAR, F1_2010_POINTS_SYSTEM, F1_2010_POINTS_FL, F1_2010_POINTS_POLE } from './stats/seasons/F12010';
+import { F1_2011_DRIVERS, F1_2011_TEAMS, F1_2011_CALENDAR, F1_2011_POINTS_SYSTEM, F1_2011_POINTS_FL, F1_2011_POINTS_POLE } from './stats/seasons/F12011';
+import { F1_2012_DRIVERS, F1_2012_TEAMS, F1_2012_CALENDAR, F1_2012_POINTS_SYSTEM, F1_2012_POINTS_FL, F1_2012_POINTS_POLE } from './stats/seasons/F12012';
+import { F1_2013_DRIVERS, F1_2013_TEAMS, F1_2013_CALENDAR, F1_2013_POINTS_SYSTEM, F1_2013_POINTS_FL, F1_2013_POINTS_POLE } from './stats/seasons/F12013';
+import { F1_2014_DRIVERS, F1_2014_TEAMS, F1_2014_CALENDAR, F1_2014_POINTS_SYSTEM, F1_2014_POINTS_FL, F1_2014_POINTS_POLE, F1_2014_DOUBLE_POINTS } from './stats/seasons/F12014';
+import { F1_2015_DRIVERS, F1_2015_TEAMS, F1_2015_CALENDAR, F1_2015_POINTS_SYSTEM, F1_2015_POINTS_FL, F1_2015_POINTS_POLE } from './stats/seasons/F12015';
+import { F1_2016_DRIVERS, F1_2016_TEAMS, F1_2016_CALENDAR, F1_2016_POINTS_SYSTEM, F1_2016_POINTS_FL, F1_2016_POINTS_POLE } from './stats/seasons/F12016';
+
+
 
 import SeasonResults from './components/SeasonResults';
 import RaceCalendar from './components/RaceCalendar';
@@ -101,6 +112,79 @@ const SEASONS = {
     pointsSystem: F1_2007_POINTS_SYSTEM,
     pointsFL: F1_2007_POINTS_FL,
     pointsPole: F1_2007_POINTS_POLE
+  },  
+  2008: {
+    drivers: F1_2008_DRIVERS,
+    teams: F1_2008_TEAMS,
+    calendar: F1_2008_CALENDAR,
+    pointsSystem: F1_2008_POINTS_SYSTEM,
+    pointsFL: F1_2008_POINTS_FL,
+    pointsPole: F1_2008_POINTS_POLE
+  },
+  2009: {
+    drivers: F1_2009_DRIVERS,
+    teams: F1_2009_TEAMS,
+    calendar: F1_2009_CALENDAR,
+    pointsSystem: F1_2009_POINTS_SYSTEM,
+    pointsFL: F1_2009_POINTS_FL,
+    pointsPole: F1_2009_POINTS_POLE
+  },
+  2010: {
+    drivers: F1_2010_DRIVERS,
+    teams: F1_2010_TEAMS,
+    calendar: F1_2010_CALENDAR,
+    pointsSystem: F1_2010_POINTS_SYSTEM,
+    pointsFL: F1_2010_POINTS_FL,
+    pointsPole: F1_2010_POINTS_POLE
+  },
+  2011: {
+    drivers: F1_2011_DRIVERS,
+    teams: F1_2011_TEAMS,
+    calendar: F1_2011_CALENDAR,
+    pointsSystem: F1_2011_POINTS_SYSTEM,
+    pointsFL: F1_2011_POINTS_FL,
+    pointsPole: F1_2011_POINTS_POLE
+  },
+  2012: {
+    drivers: F1_2012_DRIVERS,
+    teams: F1_2012_TEAMS,
+    calendar: F1_2012_CALENDAR,
+    pointsSystem: F1_2012_POINTS_SYSTEM,
+    pointsFL: F1_2012_POINTS_FL,
+    pointsPole: F1_2012_POINTS_POLE
+  },
+  2013: {
+    drivers: F1_2013_DRIVERS,
+    teams: F1_2013_TEAMS,
+    calendar: F1_2013_CALENDAR,
+    pointsSystem: F1_2013_POINTS_SYSTEM,
+    pointsFL: F1_2013_POINTS_FL,
+    pointsPole: F1_2013_POINTS_POLE
+  },
+  2014: {
+    drivers: F1_2014_DRIVERS,
+    teams: F1_2014_TEAMS,
+    calendar: F1_2014_CALENDAR,
+    pointsSystem: F1_2014_POINTS_SYSTEM,
+    pointsFL: F1_2014_POINTS_FL,
+    pointsPole: F1_2014_POINTS_POLE,
+    doublePoints: F1_2014_DOUBLE_POINTS
+  },
+  2015: {
+    drivers: F1_2015_DRIVERS,
+    teams: F1_2015_TEAMS,
+    calendar: F1_2015_CALENDAR,
+    pointsSystem: F1_2015_POINTS_SYSTEM,
+    pointsFL: F1_2015_POINTS_FL,
+    pointsPole: F1_2015_POINTS_POLE
+  },
+  2016: {
+    drivers: F1_2016_DRIVERS,
+    teams: F1_2016_TEAMS,
+    calendar: F1_2016_CALENDAR,
+    pointsSystem: F1_2016_POINTS_SYSTEM,
+    pointsFL: F1_2016_POINTS_FL,
+    pointsPole: F1_2016_POINTS_POLE
   }
   // Add more seasons here as you create them
 };
@@ -510,6 +594,7 @@ function App() {
   const [pointsSystem, setPointsSystem] = useState(SEASONS[selectedSeason].pointsSystem);
   const [pointsFL, setPointsFL] = useState(SEASONS[selectedSeason].pointsFL);
   const [pointsPole, setPointsPole] = useState(SEASONS[selectedSeason].pointsPole);
+  const [doublePoints, setDoublePoints] = useState(false);
 
   // Add season change handler
   const handleSeasonChange = (season) => {
@@ -522,6 +607,7 @@ function App() {
     setPointsSystem(SEASONS[season].pointsSystem);
     setPointsFL(SEASONS[season].pointsFL);
     setPointsPole(SEASONS[season].pointsPole);
+    setDoublePoints(SEASONS[season].doublePoints || false)
     setIsLoading(true);
   };
 
@@ -530,7 +616,11 @@ function App() {
     
     for (const race of calendar) {
       const grid = await simulateQualifying(drivers, teams, race.trackId);
-      const raceResult = await simulateRace(grid, race.trackId, pointsSystem, pointsFL, pointsPole);
+      var pointsSystemModified = pointsSystem;
+      if(doublePoints && race.id == calendar.length){
+        pointsSystemModified = pointsSystem.map(x => x + Math.floor(x));
+      } 
+      const raceResult = await simulateRace(grid, race.trackId, pointsSystemModified, pointsFL, pointsPole);
       
       seasonResults.push({
         raceId: race.id,

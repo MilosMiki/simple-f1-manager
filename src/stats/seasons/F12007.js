@@ -102,7 +102,7 @@ export const F1_2007_TEAMS = [
     chassis: 91,
     engine: 93,
     tyreConservation: 90,
-    color: "#008000", // Jaguar Green (consistent color scheme)
+    color: "#5a00ee", // Jaguar Green (consistent color scheme)
   },
   {
     id: 8,
